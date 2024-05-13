@@ -15,6 +15,7 @@ const LockScreen = React.lazy(() => import('../pages/auth/LockScreen'))
 
 // // dashboard
 const Dashboard = React.lazy(() => import('../pages/Dashboard'))
+const Product = React.lazy(() => import('../pages/Product'))
 
 // // pages
 const ProfilePages = React.lazy(() => import('../pages/other/Profile/'))
@@ -141,6 +142,14 @@ const customPagesRoutes = {
 	icon: 'pages',
 	header: 'Custom',
 	children: [
+		// new route start
+		{
+			path: '/product',
+			name: 'Profile',
+			element: <Product />,
+			route: PrivateRoute,
+		},
+		// new route end
 		{
 			path: '/pages/profile',
 			name: 'Profile',

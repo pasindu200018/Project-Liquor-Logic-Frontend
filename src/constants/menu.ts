@@ -31,10 +31,10 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		// },
 	},
 	{
-		key: 'oder',
-		label: 'Oder',
+		key: 'product',
+		label: 'Product',
 		isTitle: false,
-		url: '/oder',
+		url: '/product',
 		icon: 'ri-dashboard-3-line',
 		// badge: {
 		// 	variant: 'success',
@@ -53,27 +53,35 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		key: 'supplier',
 		label: 'Supplier',
 		isTitle: false,
-		url: '/inventory',
+		url: '/supplier',
 		icon: 'ri-dashboard-3-line',
 	
 	},
 	{
-		key: 'setting',
-		label: 'Setting',
+		key: 'report',
+		label: 'Report',
+		isTitle: false,
+		url: '/report',
+		icon: 'ri-dashboard-3-line',
+	
+	},
+	{
+		key: 'users',
+		label: 'Users',
 		isTitle: false,
 		icon: 'ri-pages-line',
 		children: [
 			{
 				key: 'User-permission',
 				label: 'User Permission',
-				url: '/setting/permission',
-				parentKey: 'setting',
+				url: '/users/permission',
+				parentKey: 'Users',
 			},
 			{
 				key: 'User-Manage',
 				label: 'User Manage',
-				url: '/setting/manege',
-				parentKey: 'setting',
+				url: '/users/manege',
+				parentKey: 'Users',
 			},
 		],
 	},
