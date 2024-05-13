@@ -14,21 +14,68 @@ export interface MenuItemTypes {
 }
 
 const MENU_ITEMS: MenuItemTypes[] = [
-	{
-		key: 'Main',
-		label: 'Main',
-		isTitle: true,
-	},
+	// {
+	// 	key: 'Main',
+	// 	label: 'Main',
+	// 	isTitle: true,
+	// },
 	{
 		key: 'dashboard',
 		label: 'Dashboards',
 		isTitle: false,
 		url: '/',
 		icon: 'ri-dashboard-3-line',
-		badge: {
-			variant: 'success',
-			text: '9+',
-		},
+		// badge: {
+		// 	variant: 'success',
+		// 	text: '9+',
+		// },
+	},
+	{
+		key: 'oder',
+		label: 'Oder',
+		isTitle: false,
+		url: '/oder',
+		icon: 'ri-dashboard-3-line',
+		// badge: {
+		// 	variant: 'success',
+		// 	text: '9+',
+		// },
+	},
+	{
+		key: 'inventory',
+		label: 'Inventory',
+		isTitle: false,
+		url: '/inventory',
+		icon: 'ri-dashboard-3-line',
+	
+	},
+	{
+		key: 'supplier',
+		label: 'Supplier',
+		isTitle: false,
+		url: '/inventory',
+		icon: 'ri-dashboard-3-line',
+	
+	},
+	{
+		key: 'setting',
+		label: 'Setting',
+		isTitle: false,
+		icon: 'ri-pages-line',
+		children: [
+			{
+				key: 'User-permission',
+				label: 'User Permission',
+				url: '/setting/permission',
+				parentKey: 'setting',
+			},
+			{
+				key: 'User-Manage',
+				label: 'User Manage',
+				url: '/setting/manege',
+				parentKey: 'setting',
+			},
+		],
 	},
 	{
 		key: 'pages',
