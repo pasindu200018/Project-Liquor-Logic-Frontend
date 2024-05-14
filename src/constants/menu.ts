@@ -25,10 +25,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		isTitle: false,
 		url: '/',
 		icon: 'ri-dashboard-3-line',
-		// badge: {
-		// 	variant: 'success',
-		// 	text: '9+',
-		// },
+	
 	},
 	{
 		key: 'product',
@@ -36,10 +33,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		isTitle: false,
 		url: '/product',
 		icon: 'ri-dashboard-3-line',
-		// badge: {
-		// 	variant: 'success',
-		// 	text: '9+',
-		// },
 	},
 	{
 		key: 'inventory',
@@ -80,7 +73,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
 			{
 				key: 'User-Manage',
 				label: 'User Manage',
-				url: '/users/manege',
+				url: '/users/manage',
 				parentKey: 'Users',
 			},
 		],

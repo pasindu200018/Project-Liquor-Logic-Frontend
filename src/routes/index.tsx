@@ -4,6 +4,7 @@ import { Route, RouteProps } from 'react-router-dom'
 // components
 import PrivateRoute from './PrivateRoute'
 
+
 // lazy load all the views
 
 // auth
@@ -15,7 +16,15 @@ const LockScreen = React.lazy(() => import('../pages/auth/LockScreen'))
 
 // // dashboard
 const Dashboard = React.lazy(() => import('../pages/Dashboard'))
+
+// new page 
 const Product = React.lazy(() => import('../pages/Product'))
+const Inventory = React.lazy(() => import('../pages/Inventory'))
+const Report = React.lazy(() => import('../pages/Report'))
+const Supplier = React.lazy(() => import('../pages/Supplier'))
+const UserManage = React.lazy(() => import('../pages/Users/Manage'))
+const UserPermission = React.lazy(() => import('../pages/Users/Permission'))
+// new Pages end
 
 // // pages
 const ProfilePages = React.lazy(() => import('../pages/other/Profile/'))
@@ -142,14 +151,50 @@ const customPagesRoutes = {
 	icon: 'pages',
 	header: 'Custom',
 	children: [
-		// new route start
+		// new page route start
 		{
 			path: '/product',
 			name: 'Profile',
 			element: <Product />,
 			route: PrivateRoute,
 		},
-		// new route end
+		{
+			path: '/inventory',
+			name: 'Inventory',
+			element: <Inventory />,
+			route: PrivateRoute,
+		},
+		{
+			path: '/report',
+			name: 'Report',
+			element: <Report />,
+			route: PrivateRoute,
+		},
+		{
+			path: '/supplier',
+			name: 'Supplier',
+			element: <Supplier />,
+			route: PrivateRoute,
+		},
+		{
+			path: '/supplier',
+			name: 'Supplier',
+			element: <Supplier />,
+			route: PrivateRoute,
+		},
+		{
+			path: 'users/manage',
+			name: 'Manage',
+			element: <UserManage />,
+			route: PrivateRoute,
+		},
+		{
+			path: 'users/permission',
+			name: 'Permission',
+			element: <UserPermission />,
+			route: PrivateRoute,
+		},
+		// new page route end
 		{
 			path: '/pages/profile',
 			name: 'Profile',
