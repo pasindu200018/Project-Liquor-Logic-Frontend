@@ -22,13 +22,13 @@ const LeftSidebar = () => {
 		<>
 			<div className="leftside-menu">
 				{/* Brand Logo Light */}
-				<Link to="/" className="logo logo-light">
-					<span className="logo-lg">
+				<Link to="/" className="logo logo-light mt-5">
+					{/* <span className="logo-lg">
 						<img src={logo} alt="logo" />
 					</span>
 					<span className="logo-sm">
 						<img src={logoSm} alt="small logo" />
-					</span>
+					</span> */}
 				</Link>
 				{/* Brand Logo Dark */}
 				<a href="index.html" className="logo logo-dark">

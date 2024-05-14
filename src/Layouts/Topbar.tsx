@@ -12,7 +12,7 @@ import avatar2 from '@/assets/images/users/avatar-2.jpg'
 import avatar3 from '@/assets/images/users/avatar-3.jpg'
 import avatar4 from '@/assets/images/users/avatar-4.jpg'
 import avatar5 from '@/assets/images/users/avatar-5.jpg'
-
+import  { getDate , getTime } from '../utils/date'
 // components
 import {
 	LanguageDropdown,
@@ -23,6 +23,7 @@ import {
 } from '@/components'
 import { useThemeCustomizer } from '@/components'
 import { useViewport } from '@/hooks'
+import { useEffect, useState } from 'react'
 /**
  * for subtraction minutes
  */
@@ -173,6 +174,22 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 	const { sideBarType } = useThemeCustomizer()
 	const { width } = useViewport()
 
+	const [time, setTime] = useState(getTime());
+	const [dateTime, setDateTime] = useState(getDate());
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setTime(getTime());
+			setDateTime(getDate());
+        }, 1000);
+
+        return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    }, []);
+
+
+
+
+
 	/**
 	 * Toggle the leftmenu when having mobile screen
 	 */
@@ -266,13 +283,12 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 							</Link>
 						</div>
 						{/* Sidebar Menu Toggle Button */}
-						
-							<button
-								className="button-toggle-menu"
-								onClick={handleLeftMenuCallBack}>
-								<i className="ri-menu-line" />
-							</button>
-						
+
+						<button
+							className="button-toggle-menu"
+							onClick={handleLeftMenuCallBack}>
+							<i className="ri-menu-line" />
+						</button>
 
 						{/* Horizontal Menu Toggle Button */}
 						<button
@@ -308,15 +324,21 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 								</div>
 							</>
 						)} */}
-
-						<Link to={`${currentPath === '/pos' ? '/dashboard' : '/pos'}`}>
-							<Button
-								className="btn-outline-success "
-								style={{ marginLeft: '10px' }}>
-								{/* <i className="ri-money-pound-circle-line me-1" />  */}
-								{currentPath === '/pos' ? 'Dashboard' : 'POS'}
-							</Button>
-						</Link>
+						{currentPath === '/pos' ? (
+							<div>
+								<p className='p-0 m-0 '><span className='fw-bold'>{time}</span>  &nbsp; &nbsp; &nbsp;{dateTime}</p>
+								{/* <p className='p-0 m-0'>Date: 2024-25-45</p> */}
+							</div>
+						) : (
+							<Link to="/pos">
+								<Button
+									className="btn-outline-success"
+									style={{ marginLeft: '10px' }}>
+									{/* <i className="ri-money-pound-circle-line me-1" /> */}
+									POS
+								</Button>
+							</Link>
+						)}
 					</div>
 
 					<ul className="topbar-menu d-flex align-items-center gap-3">

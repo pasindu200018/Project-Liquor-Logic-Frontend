@@ -11,8 +11,7 @@ import startOfMonth from 'date-fns/startOfMonth'
 import MaskedInput from 'react-text-mask-legacy'
 
 // css
-import 'react-bootstrap-typeahead/css/Typeahead.css'
-import 'rsuite/dist/rsuite-no-reset.min.css'
+
 
 // dummy data
 import { options, states } from './data'
