@@ -28,11 +28,12 @@ const MENU_ITEMS: MenuItemTypes[] = [
 	
 	},
 	{
-		key: 'product',
-		label: 'Product',
+		key: 'order',
+		label: 'Order',
 		isTitle: false,
-		url: '/product',
+		url: '/order',
 		icon: 'ri-dashboard-3-line',
+	
 	},
 	{
 		key: 'inventory',

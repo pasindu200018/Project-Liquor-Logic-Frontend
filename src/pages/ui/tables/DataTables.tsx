@@ -2,8 +2,8 @@ import { Card, Col, Row } from 'react-bootstrap'
 
 //dummy data
 import { employeeRecords, expandableRecords } from './data'
-import { Column } from 'react-table'
 import { Employee } from './types'
+import { Column } from 'react-table'
 
 // components
 import { PageSize, Table } from '@/components'

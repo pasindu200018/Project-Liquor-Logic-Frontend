@@ -202,7 +202,6 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 	 * creates backdrop for leftsidebar
 	 */
 	function showLeftSideBarBackdrop() {
-;
 		const backdrop = document.createElement('div')
 		backdrop.id = 'custom-backdrop'
 		backdrop.className = 'offcanvas-backdrop fade show'
@@ -267,11 +266,14 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 							</Link>
 						</div>
 						{/* Sidebar Menu Toggle Button */}
-						<button
-							className="button-toggle-menu"
-							onClick={handleLeftMenuCallBack}>
-							<i className="ri-menu-line" />
-						</button>
+						
+							<button
+								className="button-toggle-menu"
+								onClick={handleLeftMenuCallBack}>
+								<i className="ri-menu-line" />
+							</button>
+						
+
 						{/* Horizontal Menu Toggle Button */}
 						<button
 							className={`navbar-toggle ${navOpen ? 'open' : ''}`}
@@ -285,36 +287,45 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 							</div>
 						</button>
 						{/* Topbar Search Form */}
-						<div className="app-search d-none d-lg-block">
-							<form>
-								<div className="input-group">
-									<input
-										type="search"
-										className="form-control"
-										placeholder="Search..."
-									/>
-									<span className="ri-search-line search-icon text-muted" />
+
+						{/* {currentPath === '/pos' ? (
+							(<>
+							123456
+							</>)
+						) : (
+							<>
+								<div className="app-search d-none d-lg-block">
+									<form>
+										<div className="input-group">
+											<input
+												type="search"
+												className="form-control"
+												placeholder="Search..."
+											/>
+											<span className="ri-search-line search-icon text-muted" />
+										</div>
+									</form>
 								</div>
-							</form>
-						</div>
-						
-						<Link to={`${currentPath === '/pos' ? "/dashboard" : "/pos"}`}>
+							</>
+						)} */}
+
+						<Link to={`${currentPath === '/pos' ? '/dashboard' : '/pos'}`}>
 							<Button
 								className="btn-outline-success "
 								style={{ marginLeft: '10px' }}>
 								{/* <i className="ri-money-pound-circle-line me-1" />  */}
-								{currentPath === '/pos' ? "Dashboard" : "POS"}
+								{currentPath === '/pos' ? 'Dashboard' : 'POS'}
 							</Button>
 						</Link>
 					</div>
 
 					<ul className="topbar-menu d-flex align-items-center gap-3">
-						<li className="dropdown d-lg-none">
+						{/* <li className="dropdown d-lg-none">
 							<SearchDropDown />
-						</li>
-						<li className="dropdown">
+						</li> */}
+						{/* <li className="dropdown">
 							<LanguageDropdown />
-						</li>
+						</li> */}
 						{/* <li className="dropdown notification-list">
 							<MessageDropdown messages={Messages} />
 						</li> */}

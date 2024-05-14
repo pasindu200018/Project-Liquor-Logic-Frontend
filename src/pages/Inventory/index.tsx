@@ -1,11 +1,133 @@
+import { PageBreadcrumb } from '@/components'
+import { Button, Card, Col, Row } from 'react-bootstrap'
+import { employeeRecords } from './data'
+import { Column } from 'react-table'
+import {  PageSize , Table } from '@/components'
+
+type Employee = {
+	id: number
+	age: number
+	name: string
+	company: string
+	phone: string
+	subRows?: Employee[]
+}
 
 
+const columns: ReadonlyArray<Column> = [
+	{
+		Header: 'ID',
+		accessor: 'id',
+		defaultCanSort: true,
+	},
+	{
+		Header: 'Name',
+		accessor: 'name',
+		defaultCanSort: true,
+	},
+	{
+		Header: 'Phone Number',
+		accessor: 'phone',
+		defaultCanSort: false,
+	},
+	{
+		Header: 'Age',
+		accessor: 'age',
+		defaultCanSort: true,
+	},
+	{
+		Header: 'Company',
+		accessor: 'company',
+		defaultCanSort: false,
+	},
+]
+const sizePerPageList: PageSize[] = [
+	{
+		text: '5',
+		value: 5,
+	},
+	{
+		text: '10',
+		value: 10,
+	},
+	{
+		text: '25',
+		value: 25,
+	},
+	{
+		text: 'All',
+		value: employeeRecords.length,
+	},
+]
 const Inventory = () => {
-  return (
-    <div>
-      Inventory
-    </div>
-  )
+	return (
+		<>
+			<PageBreadcrumb title="Inventory" subName="Dashboards" />
+
+			<div
+				className="d-flex justify-content-between"
+				style={{ marginTop: '10px' }}>
+				<div className="d-flex gap-1">
+					<Button className="btn-outline-primary">
+						<i className="ri-equalizer-line me-1" /> filter
+					</Button>
+					<form>
+						<div className="input-group">
+							<input
+								type="search"
+								className="form-control"
+								placeholder="Search..."
+							/>
+						</div>
+					</form>
+				</div>
+				<div className="d-flex gap-1">
+				<Button variant="danger">
+						<i className="ri-save-fill me-1" /> <span>PDF</span>
+					</Button>
+					<Button variant="danger">
+						<i className="ri-save-fill me-1" /> <span>Print</span>
+					</Button>
+					<Button variant="success">
+						<i className="ri-rocket-line me-1" /> <span>WORD</span>
+					</Button>
+				</div>
+			</div>
+
+			{/* Data table  */}
+			<div className="mt-3">
+			<Row>
+				<Col>
+					<Card>
+					<Card.Header className="d-flex  justify-content-between">
+								<div>
+									<h4 className="header-title">Pagination &amp; Sort</h4>
+									<p className="text-muted mb-0">
+										A simple example of table with pagination and column sorting
+									</p>
+								</div>
+								<div>
+									<Button className="btn-outline-dark">
+										<i className="ri-money-pound-circle-line me-1" /> Add Inventory
+									</Button>
+								</div>
+							</Card.Header>
+						<Card.Body>
+							<Table<Employee>
+								columns={columns}
+								data={employeeRecords}
+								pageSize={5}
+								sizePerPageList={sizePerPageList}
+								isSortable={true}
+								pagination={true}
+							/>
+						</Card.Body>
+					</Card>
+				</Col>
+			</Row>
+			</div>
+		</>
+	)
 }
 
 export default Inventory

@@ -2,7 +2,7 @@ import { PageBreadcrumb } from '@/components'
 import { Button, Card, Col, Row } from 'react-bootstrap'
 import { employeeRecords } from './data'
 import { Column } from 'react-table'
-import {  PageSize , Table } from '@/components'
+import { PageSize, Table } from '@/components'
 
 type Employee = {
 	id: number
@@ -12,7 +12,6 @@ type Employee = {
 	phone: string
 	subRows?: Employee[]
 }
-
 
 const columns: ReadonlyArray<Column> = [
 	{
@@ -60,10 +59,10 @@ const sizePerPageList: PageSize[] = [
 	},
 ]
 
-const Supplier = () => {
+const Order = () => {
 	return (
 		<>
-			<PageBreadcrumb title="Supplier" subName="Dashboards" />
+			<PageBreadcrumb title="Order" subName="Dashboards" />
 
 			<div
 				className="d-flex justify-content-between"
@@ -82,8 +81,8 @@ const Supplier = () => {
 						</div>
 					</form>
 				</div>
-				{/* <div className="d-flex gap-1">
-				<Button variant="danger">
+				<div className="d-flex gap-1">
+					<Button variant="danger">
 						<i className="ri-save-fill me-1" /> <span>PDF</span>
 					</Button>
 					<Button variant="danger">
@@ -92,15 +91,15 @@ const Supplier = () => {
 					<Button variant="success">
 						<i className="ri-rocket-line me-1" /> <span>WORD</span>
 					</Button>
-				</div> */}
+				</div>
 			</div>
 
 			{/* Data table  */}
 			<div className="mt-3">
-			<Row>
-				<Col>
-					<Card>
-					<Card.Header className="d-flex  justify-content-between">
+				<Row>
+					<Col>
+						<Card>
+							<Card.Header className="d-flex  justify-content-between">
 								<div>
 									<h4 className="header-title">Pagination &amp; Sort</h4>
 									<p className="text-muted mb-0">
@@ -109,26 +108,26 @@ const Supplier = () => {
 								</div>
 								<div>
 									<Button className="btn-outline-dark">
-										<i className="ri-money-pound-circle-line me-1" /> Add Supplier
+										<i className="ri-money-pound-circle-line me-1" /> Add Order
 									</Button>
 								</div>
 							</Card.Header>
-						<Card.Body>
-							<Table<Employee>
-								columns={columns}
-								data={employeeRecords}
-								pageSize={5}
-								sizePerPageList={sizePerPageList}
-								isSortable={true}
-								pagination={true}
-							/>
-						</Card.Body>
-					</Card>
-				</Col>
-			</Row>
+							<Card.Body>
+								<Table<Employee>
+									columns={columns}
+									data={employeeRecords}
+									pageSize={5}
+									sizePerPageList={sizePerPageList}
+									isSortable={true}
+									pagination={true}
+								/>
+							</Card.Body>
+						</Card>
+					</Col>
+				</Row>
 			</div>
 		</>
 	)
 }
 
-export default Supplier
+export default Order

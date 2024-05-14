@@ -18,8 +18,9 @@ const LockScreen = React.lazy(() => import('../pages/auth/LockScreen'))
 const Dashboard = React.lazy(() => import('../pages/Dashboard'))
 
 // new page 
-const Product = React.lazy(() => import('../pages/Product'))
+
 const Inventory = React.lazy(() => import('../pages/Inventory'))
+const Order = React.lazy(() => import('../pages/Order'))
 const Report = React.lazy(() => import('../pages/Report'))
 const Supplier = React.lazy(() => import('../pages/Supplier'))
 const UserManage = React.lazy(() => import('../pages/Users/Manage'))
@@ -164,12 +165,6 @@ const customPagesRoutes = {
 	children: [
 		// new page route start
 		{
-			path: '/product',
-			name: 'Profile',
-			element: <Product />,
-			route: PrivateRoute,
-		},
-		{
 			path: '/inventory',
 			name: 'Inventory',
 			element: <Inventory />,
@@ -179,6 +174,12 @@ const customPagesRoutes = {
 			path: '/report',
 			name: 'Report',
 			element: <Report />,
+			route: PrivateRoute,
+		},
+		{
+			path: '/order',
+			name: 'Order',
+			element: <Order />,
 			route: PrivateRoute,
 		},
 		{
