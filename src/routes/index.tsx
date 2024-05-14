@@ -24,6 +24,8 @@ const Report = React.lazy(() => import('../pages/Report'))
 const Supplier = React.lazy(() => import('../pages/Supplier'))
 const UserManage = React.lazy(() => import('../pages/Users/Manage'))
 const UserPermission = React.lazy(() => import('../pages/Users/Permission'))
+
+const Pos = React.lazy(() => import('../pages/Pos'))
 // new Pages end
 
 // // pages
@@ -121,6 +123,15 @@ export interface RoutesProps {
 	roles?: string[]
 	children?: RoutesProps[]
 }
+
+const PosRoutes: RoutesProps = {
+	path: '/pos',
+	name: 'pos',
+	icon: 'home',
+	// header: 'Navigation',
+	element: <Pos />,
+}
+
 
 // dashboards
 const dashboardRoutes: RoutesProps = {
@@ -657,7 +668,7 @@ const flattenRoutes = (routes: RoutesProps[]) => {
 }
 
 // All routes
-const authProtectedRoutes = [dashboardRoutes, customPagesRoutes, uiRoutes]
+const authProtectedRoutes = [dashboardRoutes, customPagesRoutes, uiRoutes, PosRoutes]
 const publicRoutes = [...authRoutes, ...otherPublicRoutes]
 
 const authProtectedFlattenRoutes = flattenRoutes([...authProtectedRoutes])

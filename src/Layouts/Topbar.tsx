@@ -1,4 +1,4 @@
-import { Image } from 'react-bootstrap'
+import { Button, Image } from 'react-bootstrap'
 import { ThemeSettings, useThemeContext } from '@/common'
 import { Link } from 'react-router-dom'
 
@@ -202,6 +202,7 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 	 * creates backdrop for leftsidebar
 	 */
 	function showLeftSideBarBackdrop() {
+;
 		const backdrop = document.createElement('div')
 		backdrop.id = 'custom-backdrop'
 		backdrop.className = 'offcanvas-backdrop fade show'
@@ -227,6 +228,7 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 	/**
 	 * Toggle Dark Mode
 	 */
+	const currentPath = window.location.pathname
 	const toggleDarkMode = () => {
 		if (settings.theme === 'dark') {
 			updateSettings({ theme: ThemeSettings.theme.light })
@@ -267,8 +269,7 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 						{/* Sidebar Menu Toggle Button */}
 						<button
 							className="button-toggle-menu"
-							onClick={handleLeftMenuCallBack}
-						>
+							onClick={handleLeftMenuCallBack}>
 							<i className="ri-menu-line" />
 						</button>
 						{/* Horizontal Menu Toggle Button */}
@@ -276,8 +277,7 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 							className={`navbar-toggle ${navOpen ? 'open' : ''}`}
 							data-bs-toggle="collapse"
 							data-bs-target="#topnav-menu-content"
-							onClick={toggleMenu}
-						>
+							onClick={toggleMenu}>
 							<div className="lines">
 								<span />
 								<span />
@@ -297,7 +297,17 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 								</div>
 							</form>
 						</div>
+						
+						<Link to={`${currentPath === '/pos' ? "/dashboard" : "/pos"}`}>
+							<Button
+								className="btn-outline-success "
+								style={{ marginLeft: '10px' }}>
+								{/* <i className="ri-money-pound-circle-line me-1" />  */}
+								{currentPath === '/pos' ? "Dashboard" : "POS"}
+							</Button>
+						</Link>
 					</div>
+
 					<ul className="topbar-menu d-flex align-items-center gap-3">
 						<li className="dropdown d-lg-none">
 							<SearchDropDown />
@@ -305,12 +315,12 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 						<li className="dropdown">
 							<LanguageDropdown />
 						</li>
-						<li className="dropdown notification-list">
+						{/* <li className="dropdown notification-list">
 							<MessageDropdown messages={Messages} />
-						</li>
-						<li className="dropdown notification-list">
+						</li> */}
+						{/* <li className="dropdown notification-list">
 							<NotificationDropdown notifications={Notifications} />
-						</li>
+						</li> */}
 						<li className="d-none d-sm-inline-block">
 							<button className="nav-link" onClick={handleRightSideBar}>
 								<i className="ri-settings-3-line fs-22" />
@@ -320,8 +330,7 @@ const Topbar = ({ toggleMenu, navOpen }: TopbarProps) => {
 							<div
 								className="nav-link"
 								id="light-dark-mode"
-								onClick={toggleDarkMode}
-							>
+								onClick={toggleDarkMode}>
 								<i className="ri-moon-line fs-22" />
 							</div>
 						</li>

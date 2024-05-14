@@ -144,11 +144,11 @@ const Product = () => {
 										return (
 											<tr key={idx}>
 												<td className="table-user">
-													<img
+													{/* <img
 														src={record.image}
 														alt="table-user"
 														className="me-2 rounded-circle"
-													/>
+													/> */}
 													&nbsp;{record.name}
 												</td>
 												<td>{record.accountNo}</td>
