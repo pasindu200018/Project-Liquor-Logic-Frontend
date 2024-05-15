@@ -6,6 +6,7 @@ import {
 	Row,
 	Table,
 	Form,
+	Card,
 } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Select from 'react-select'
@@ -16,6 +17,10 @@ import avatar4 from '@/assets/images/users/avatar-4.jpg'
 import avatar5 from '@/assets/images/users/avatar-5.jpg'
 import { useModal, useToggle } from '@/hooks'
 import { FormInput } from '@/components'
+import logoDark from '@/assets/images/logo-dark.png'
+
+import { useRef } from 'react'
+import { useReactToPrint } from 'react-to-print'
 
 export const options = [
 	{ value: '', label: 'Select' },
@@ -155,6 +160,11 @@ const expandablerecords: ExpandableRecord[] = [
 
 const Pos = () => {
 	const [isStandardOpen, toggleStandard] = useToggle()
+	const componentRef = useRef()
+
+	const handlePrint = useReactToPrint({
+		content: () => componentRef.current,
+	})
 
 	const {
 		isOpen,
@@ -194,7 +204,6 @@ const Pos = () => {
 											<Form.Select aria-label="Floating label select example">
 												<option defaultValue="selected">Cash</option>
 												<option defaultValue="1">Card</option>
-												
 											</Form.Select>
 										</FloatingLabel>
 									</Col>
@@ -212,7 +221,6 @@ const Pos = () => {
 													// control={control}
 												/>
 											</Col>
-										
 										</Row>
 									</Col>
 									<Col lg={12} className="">
@@ -247,9 +255,121 @@ const Pos = () => {
 								</Row>
 							</Col>
 
-							<Col lg={6}>
-
-								
+							<Col lg={6} id="printableDiv" ref={componentRef}>
+								<Row>
+									<Col lg={12}>
+										<div className="clearfix">
+											<div className="float-start mb-3">
+												<img src={logoDark} alt="dark logo" height={22} />
+											</div>
+											<div className="float-end">
+												<h4 className="m-0 d-print-none">Invoice</h4>
+											</div>
+										</div>
+									</Col>
+									<Col lg={12}>
+										<div className="clearfix">
+											<div className="float-start mb-3">
+												<p>Order Time 5.60PM 2024/12/31</p>
+											</div>
+											<div className="float-end">
+												<h4 className="m-0 d-print-none">
+													Order ID : #45785841
+												</h4>
+											</div>
+										</div>
+									</Col>
+									<Col lg={12}>
+										<Card>
+											<Card.Header>
+												<h4 className="header-title">Small table</h4>
+												<p className="text-muted mb-0">
+													Add <code>.table-sm</code> to make tables more compact
+													by cutting cell padding in half.
+												</p>
+											</Card.Header>
+											<Card.Body>
+												<div className="table-responsive-sm">
+													<Table className="table-sm table-centered mb-0">
+														<thead>
+															<tr>
+																<th>Product</th>
+																<th>Price</th>
+																<th>Quantity</th>
+																<th>Amount</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>Soyameet</td>
+																<td>2</td>
+																<td>
+																	<span className="badge bg-primary">
+																		4 Pcs
+																	</span>
+																</td>
+																<td>Rs 800.00</td>
+															</tr>
+															<tr>
+																<td>Soyameet</td>
+																<td>2</td>
+																<td>
+																	<span className="badge bg-primary">
+																		4 Pcs
+																	</span>
+																</td>
+																<td>Rs 800.00</td>
+															</tr>
+															<tr>
+																<td>Soyameet</td>
+																<td>2</td>
+																<td>
+																	<span className="badge bg-primary">
+																		4 Pcs
+																	</span>
+																</td>
+																<td>Rs 800.00</td>
+															</tr>
+															<tr>
+																<td>Soyameet</td>
+																<td>2</td>
+																<td>
+																	<span className="badge bg-primary">
+																		4 Pcs
+																	</span>
+																</td>
+																<td>Rs 800.00</td>
+															</tr>
+														</tbody>
+													</Table>
+												</div>
+											</Card.Body>
+										</Card>
+									</Col>
+									<Col
+										lg={12}
+										className="mt-3 px-4 d-flex justify-content-between">
+										<h4>Total</h4>
+										<h4>Rs 2000.00</h4>
+									</Col>
+									<Col lg={4} className="p-4  d-flex justify-content-between">
+										<h5>Thank You!</h5>
+									</Col>
+									<Col lg={8} className="px-4 mt-3 justify-content-between">
+										<div className="d-flex justify-content-between">
+											<h5>Pay Amount</h5>
+											<h5>Rs 5000.00</h5>
+										</div>
+										<div className="d-flex justify-content-between">
+											<h5>Total</h5>
+											<h5>Rs 2000.00</h5>
+										</div>
+										<div className="d-flex justify-content-between">
+											<h5>Change</h5>
+											<h5>Rs 3000.00</h5>
+										</div>
+									</Col>
+								</Row>
 							</Col>
 						</Row>
 					</div>
@@ -258,21 +378,23 @@ const Pos = () => {
 					<Button variant="light" onClick={toggleStandard}>
 						Close
 					</Button>
-					<Button variant="primary" onClick={toggleStandard}>
-						Print
+					{/* <ReactToPrint/> */}
+					<Button variant="primary" onClick={handlePrint}>
+						<i className="ri-printer-line" /> Print
 					</Button>
 					<Button variant="primary" onClick={toggleStandard}>
 						Save
 					</Button>
 				</Modal.Footer>
 			</Modal>
+
 			{/* model  */}
 			<div className="d-flex justify-content-between align-items-center mt-3 mb-3 ">
 				<h4>Cashier : Imalka Thathmi</h4>
 				<Link to="/order">
-				<Button className="btn-primary">
-					<i className="ri-paypal-line me-1" /> Histroy
-				</Button>
+					<Button className="btn-primary">
+						<i className="ri-paypal-line me-1" /> Histroy
+					</Button>
 				</Link>
 			</div>
 			<div className="grid-structure">
