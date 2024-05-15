@@ -1,8 +1,10 @@
-import { PageBreadcrumb } from '@/components'
+import { FormInput, PageBreadcrumb } from '@/components'
 import { Button, Card, Col, Row } from 'react-bootstrap'
 import { employeeRecords } from './data'
 import { Column } from 'react-table'
 import { PageSize, Table } from '@/components'
+
+import { useState } from 'react'
 
 type Employee = {
 	id: number
@@ -60,6 +62,12 @@ const sizePerPageList: PageSize[] = [
 ]
 
 const Order = () => {
+	const [filterToggle , setFilterToggle] = useState(false)
+
+	const filterToggleHandler = () => {
+		setFilterToggle(!filterToggle)
+	}
+
 	return (
 		<>
 			<PageBreadcrumb title="Order" subName="Dashboards" />
@@ -68,7 +76,7 @@ const Order = () => {
 				className="d-flex justify-content-between"
 				style={{ marginTop: '10px' }}>
 				<div className="d-flex gap-1">
-					<Button className="btn-outline-primary">
+					<Button className="btn-outline-primary" onClick={filterToggleHandler}>
 						<i className="ri-equalizer-line me-1" /> filter
 					</Button>
 					<form>
@@ -93,6 +101,94 @@ const Order = () => {
 					</Button>
 				</div>
 			</div>
+
+			<Card className={`mt-3 ${!filterToggle ? "d-none" : ""}`}>
+				<Card.Header>
+					<div className="grid-container">
+						<Row className="grid-container">
+							<Col lg={4}>
+								<FormInput
+									label="To Date"
+									type="date"
+									name="date"
+									containerClass="mb-3"
+									// register={register}
+									key="date"
+									// errors={errors}
+									// control={control}
+								/>
+							</Col>
+							<Col lg={4}>
+								<FormInput
+									label="From Date"
+									type="date"
+									name="date"
+									containerClass="mb-3"
+									// register={register}
+									key="date"
+									// errors={errors}
+									// control={control}
+								/>
+							</Col>
+
+							<Col lg={4}>
+								<FormInput
+									label="From Date"
+									type="date"
+									name="date"
+									containerClass="mb-3"
+									// register={register}
+									key="date"
+									// errors={errors}
+									// control={control}
+								/>
+							</Col>
+							<Col lg={6}>
+							<FormInput
+								name="select"
+								label="Cashier"
+								type="select"
+								containerClass="mb-3"
+								className="form-select"
+								// register={register}
+								key="select"
+								// errors={errors}
+								// control={control}
+							>
+								<option defaultValue="selected">1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</FormInput>
+								</Col>
+								<Col lg={6}>
+							<FormInput
+								name="select"
+								label="Input Select"
+								type="select"
+								containerClass="mb-3"
+								className="form-select"
+								// register={register}
+								key="select"
+								// errors={errors}
+								// control={control}
+							>
+								<option defaultValue="selected">1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</FormInput>
+								</Col>
+						</Row>
+					</div>
+				</Card.Header>
+			</Card>
+
+
+
+
 
 			{/* Data table  */}
 			<div className="mt-3">

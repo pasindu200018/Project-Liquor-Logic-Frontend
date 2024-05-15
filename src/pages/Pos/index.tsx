@@ -235,6 +235,7 @@ const Pos = () => {
 								</tbody>
 							</Table>
 						</div>
+						
 						<div className="grid-container py-2">
 							<Row>
 								<Col
