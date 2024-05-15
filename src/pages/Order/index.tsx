@@ -5,6 +5,7 @@ import { Column } from 'react-table'
 import { PageSize, Table } from '@/components'
 
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 type Employee = {
 	id: number
@@ -91,13 +92,13 @@ const Order = () => {
 				</div>
 				<div className="d-flex gap-1">
 					<Button variant="danger">
-						<i className="ri-save-fill me-1" /> <span>PDF</span>
-					</Button>
-					<Button variant="danger">
-						<i className="ri-save-fill me-1" /> <span>Print</span>
+						<i className="ri-file-pdf-line me-1" /> <span>PDF</span>
 					</Button>
 					<Button variant="success">
-						<i className="ri-rocket-line me-1" /> <span>WORD</span>
+						<i className="ri-file-excel-line me-1" /> <span>excel</span>
+					</Button>
+					<Button variant="secondary">
+						<i className="ri-printer-line me-1" /> <span>Print</span>
 					</Button>
 				</div>
 			</div>
@@ -203,9 +204,13 @@ const Order = () => {
 									</p>
 								</div>
 								<div>
-									<Button className="btn-outline-dark">
-										<i className="ri-money-pound-circle-line me-1" /> Add Order
+									<Link to="/pos">
+									<Button  className="btn-outline-dark">
+									<i className="ri-shopping-bag-line me-1"></i>
+										 
+										Add Order
 									</Button>
+									</Link>
 								</div>
 							</Card.Header>
 							<Card.Body>

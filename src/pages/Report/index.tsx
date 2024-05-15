@@ -111,13 +111,13 @@ const Report = () => {
 
 				<div className="d-flex gap-1">
 					<Button variant="danger">
-						<i className="ri-save-fill me-1" /> <span>PDF</span>
-					</Button>
-					<Button variant="danger">
-						<i className="ri-save-fill me-1" /> <span>Print</span>
+						<i className="ri-file-pdf-line me-1" /> <span>PDF</span>
 					</Button>
 					<Button variant="success">
-						<i className="ri-rocket-line me-1" /> <span>WORD</span>
+						<i className="ri-file-excel-line me-1" /> <span>excel</span>
+					</Button>
+					<Button variant="secondary">
+						<i className="ri-printer-line me-1" /> <span>Print</span>
 					</Button>
 				</div>
 			</div>
@@ -221,9 +221,9 @@ const Report = () => {
 									</p>
 								</div>
 								<div>
-									<Button className="btn-outline-dark">
+									{/* <Button className="btn-outline-dark">
 										<i className="ri-money-pound-circle-line me-1" /> Add Order
-									</Button>
+									</Button> */}
 								</div>
 							</Card.Header>
 							<Card.Body>

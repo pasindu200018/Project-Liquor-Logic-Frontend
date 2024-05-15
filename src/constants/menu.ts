@@ -24,7 +24,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		label: 'Dashboards',
 		isTitle: false,
 		url: '/',
-		icon: 'ri-dashboard-3-line',
+		icon: 'ri-dashboard-line',
 	
 	},
 	{
@@ -32,7 +32,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		label: 'Order',
 		isTitle: false,
 		url: '/order',
-		icon: 'ri-dashboard-3-line',
+		icon: 'ri-shopping-bag-line',
 	
 	},
 	{
@@ -40,7 +40,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		label: 'Inventory',
 		isTitle: false,
 		url: '/inventory',
-		icon: 'ri-dashboard-3-line',
+		icon: 'ri-store-2-line',
 	
 	},
 	{
@@ -48,7 +48,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		label: 'Supplier',
 		isTitle: false,
 		url: '/supplier',
-		icon: 'ri-dashboard-3-line',
+		icon: 'ri-folder-user-line',
 	
 	},
 	{
@@ -63,18 +63,20 @@ const MENU_ITEMS: MenuItemTypes[] = [
 		key: 'users',
 		label: 'Users',
 		isTitle: false,
-		icon: 'ri-pages-line',
+		icon: 'ri-user-line',
 		children: [
 			{
 				key: 'User-permission',
 				label: 'User Permission',
 				url: '/users/permission',
+		
 				parentKey: 'Users',
 			},
 			{
 				key: 'User-Manage',
 				label: 'User Manage',
 				url: '/users/manage',
+		
 				parentKey: 'Users',
 			},
 		],

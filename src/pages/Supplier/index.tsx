@@ -1,9 +1,11 @@
 import { FormInput , PageBreadcrumb } from '@/components'
-import { Button, Card, Col, Row } from 'react-bootstrap'
+import { Button, Card, Col, Row, Form, FloatingLabel, Modal } from 'react-bootstrap'
 import { employeeRecords } from './data'
 import { Column } from 'react-table'
 import {  PageSize , Table } from '@/components'
 import { useState } from 'react'
+import { useModal, useToggle } from '@/hooks'
+
 
 type Employee = {
 	id: number
@@ -62,6 +64,20 @@ const sizePerPageList: PageSize[] = [
 ]
 
 const Supplier = () => {
+
+	const [isStandardOpen, toggleStandard] = useToggle()
+
+	const {
+		isOpen,
+		size,
+		className,
+		scroll,
+		toggleModal,
+		openModalWithSize,
+		openModalWithClass,
+		openModalWithScroll,
+	} = useModal()
+
 	const [filterToggle , setFilterToggle] = useState(false)
 
 	const filterToggleHandler = () => {
@@ -200,8 +216,8 @@ const Supplier = () => {
 									</p>
 								</div>
 								<div>
-									<Button className="btn-outline-dark">
-										<i className="ri-money-pound-circle-line me-1" /> Add Supplier
+									<Button className="btn-outline-dark" onClick={() => openModalWithClass('modal-full-width')}>
+										<i className="ri-folder-user-line me-1" /> Add Supplier
 									</Button>
 								</div>
 							</Card.Header>
@@ -218,7 +234,107 @@ const Supplier = () => {
 					</Card>
 				</Col>
 			</Row>
+
 			</div>
+
+			{/* model  */}
+			<Modal
+				className="fade"
+				show={isOpen}
+				onHide={toggleModal}
+				dialogClassName={className}
+				size={size}
+				scrollable={scroll}>
+				<Modal.Header onHide={toggleStandard} closeButton>
+					<Modal.Title as="h4">Billing</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<div className="grid-structure">
+						<Row className="mt-2">
+							<Col lg={6}>
+								<Row>
+									<Col lg={6}>
+										<h5>Payment</h5>
+										<FloatingLabel
+											controlId="floatingSelect"
+											label="Payment Method"
+											className="mb-3">
+											<Form.Select aria-label="Floating label select example">
+												<option defaultValue="selected">Cash</option>
+												<option defaultValue="1">Card</option>
+												
+											</Form.Select>
+										</FloatingLabel>
+									</Col>
+									<Col lg={12}>
+										<Row>
+											<Col lg={6}>
+												<FormInput
+													label="Pay Amount"
+													type="number"
+													name="text"
+													containerClass="mb-3"
+													// register={register}
+													key="text"
+													// errors={errors}
+													// control={control}
+												/>
+											</Col>
+										
+										</Row>
+									</Col>
+									<Col lg={12} className="">
+										<h5>
+											Description <span className="opacity-50">(optional)</span>
+										</h5>
+										<Row>
+											<Col lg={6}>
+												<FloatingLabel
+													controlId="floatingTextarea2"
+													label="Order Description">
+													<Form.Control
+														as="textarea"
+														placeholder="Leave a comment here"
+														style={{ height: '100px' }}
+													/>
+												</FloatingLabel>
+											</Col>
+											<Col lg={6}>
+												<FloatingLabel
+													controlId="floatingTextarea2"
+													label="Customer Description">
+													<Form.Control
+														as="textarea"
+														placeholder="Leave a comment here"
+														style={{ height: '100px' }}
+													/>
+												</FloatingLabel>
+											</Col>
+										</Row>
+									</Col>
+								</Row>
+							</Col>
+
+							<Col lg={6}>
+
+								
+							</Col>
+						</Row>
+					</div>
+				</Modal.Body>
+				<Modal.Footer>
+					<Button variant="light" onClick={toggleStandard}>
+						Close
+					</Button>
+					<Button variant="primary" onClick={toggleStandard}>
+						Print
+					</Button>
+					<Button variant="primary" onClick={toggleStandard}>
+						Save
+					</Button>
+				</Modal.Footer>
+			</Modal>
+			{/* model  */}
 		</>
 	)
 }
