@@ -1,11 +1,18 @@
-import {FormInput, PageBreadcrumb } from '@/components'
-import { Button, Card, Col, FloatingLabel, Modal, Row, Form } from 'react-bootstrap'
+import { FormInput, PageBreadcrumb } from '@/components'
+import {
+	Button,
+	Card,
+	Col,
+	FloatingLabel,
+	Modal,
+	Row,
+	Form,
+} from 'react-bootstrap'
 import { employeeRecords } from './data'
 import { Column } from 'react-table'
-import {  PageSize , Table } from '@/components'
+import { PageSize, Table } from '@/components'
 import { useState } from 'react'
 import { useModal, useToggle } from '@/hooks'
-
 
 type Employee = {
 	id: number
@@ -15,7 +22,6 @@ type Employee = {
 	phone: string
 	subRows?: Employee[]
 }
-
 
 const columns: ReadonlyArray<Column> = [
 	{
@@ -63,11 +69,10 @@ const sizePerPageList: PageSize[] = [
 	},
 ]
 const Inventory = () => {
-
 	const [isStandardOpen, toggleStandard] = useToggle()
 
-	const [filterToggle , setFilterToggle] = useState(false)
-	
+	const [filterToggle, setFilterToggle] = useState(false)
+
 	const {
 		isOpen,
 		size,
@@ -102,9 +107,7 @@ const Inventory = () => {
 						</div>
 					</form>
 				</div>
-				
 
-			
 				<div className="d-flex gap-1">
 					<Button variant="danger">
 						<i className="ri-file-pdf-line me-1" /> <span>PDF</span>
@@ -115,12 +118,11 @@ const Inventory = () => {
 					<Button variant="secondary">
 						<i className="ri-printer-line me-1" /> <span>Print</span>
 					</Button>
-				
 				</div>
 			</div>
 
 			{/* filter  */}
-			<Card className={`mt-3 ${!filterToggle ? "d-none" : ""}`}>
+			<Card className={`mt-3 ${!filterToggle ? 'd-none' : ''}`}>
 				<Card.Header>
 					<div className="grid-container">
 						<Row className="grid-container">
@@ -162,56 +164,55 @@ const Inventory = () => {
 								/>
 							</Col>
 							<Col lg={6}>
-							<FormInput
-								name="select"
-								label="Cashier"
-								type="select"
-								containerClass="mb-3"
-								className="form-select"
-								// register={register}
-								key="select"
-								// errors={errors}
-								// control={control}
-							>
-								<option defaultValue="selected">1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</FormInput>
-								</Col>
-								<Col lg={6}>
-							<FormInput
-								name="select"
-								label="Input Select"
-								type="select"
-								containerClass="mb-3"
-								className="form-select"
-								// register={register}
-								key="select"
-								// errors={errors}
-								// control={control}
-							>
-								<option defaultValue="selected">1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</FormInput>
-								</Col>
+								<FormInput
+									name="select"
+									label="Cashier"
+									type="select"
+									containerClass="mb-3"
+									className="form-select"
+									// register={register}
+									key="select"
+									// errors={errors}
+									// control={control}
+								>
+									<option defaultValue="selected">1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</FormInput>
+							</Col>
+							<Col lg={6}>
+								<FormInput
+									name="select"
+									label="Input Select"
+									type="select"
+									containerClass="mb-3"
+									className="form-select"
+									// register={register}
+									key="select"
+									// errors={errors}
+									// control={control}
+								>
+									<option defaultValue="selected">1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</FormInput>
+							</Col>
 						</Row>
 					</div>
 				</Card.Header>
 			</Card>
 			{/* filter end */}
 
-
 			{/* Data table  */}
 			<div className="mt-3">
-			<Row>
-				<Col>
-					<Card>
-					<Card.Header className="d-flex  justify-content-between">
+				<Row>
+					<Col>
+						<Card>
+							<Card.Header className="d-flex  justify-content-between">
 								<div>
 									<h4 className="header-title">Pagination &amp; Sort</h4>
 									<p className="text-muted mb-0">
@@ -219,45 +220,118 @@ const Inventory = () => {
 									</p>
 								</div>
 								<div>
-									<Button className="btn-outline-dark" onClick={() => openModalWithClass('modal-full-width')}>
+									<Button
+										className="btn-outline-dark"
+										onClick={() => openModalWithClass('modal-full-width')}>
 										<i className="ri-store-2-line me-1" /> Add Inventory
 									</Button>
 								</div>
 							</Card.Header>
-						<Card.Body>
-							<Table<Employee>
-								columns={columns}
-								data={employeeRecords}
-								pageSize={5}
-								sizePerPageList={sizePerPageList}
-								isSortable={true}
-								pagination={true}
-							/>
-						</Card.Body>
-					</Card>
-				</Col>
-			</Row>
+							<Card.Body>
+								<Table<Employee>
+									columns={columns}
+									data={employeeRecords}
+									pageSize={5}
+									sizePerPageList={sizePerPageList}
+									isSortable={true}
+									pagination={true}
+								/>
+							</Card.Body>
+						</Card>
+					</Col>
+				</Row>
 			</div>
-
 
 			{/* model  */}
 			<Modal
 				className="fade"
 				show={isOpen}
 				onHide={toggleModal}
-				dialogClassName={className}
+				dialogClassName="lg"
 				size={size}
 				scrollable={scroll}>
 				<Modal.Header onHide={toggleStandard} closeButton>
-					<Modal.Title as="h4">Billing</Modal.Title>
+					<Modal.Title as="h4">Add Inventory</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<div className="grid-structure">
 						<Row className="mt-2">
-							<Col lg={6}>
+							<Col lg={12}>
 								<Row>
+									<Col lg={12}>
+										<FormInput
+											label="Name"
+											type="text"
+											name="text"
+											containerClass="mb-3"
+											// register={register}
+											key="text"
+											// errors={errors}
+											// control={control}
+										/>
+									</Col>
+									<Col lg={12}>
+										<FormInput
+											label="Brand"
+											type="text"
+											name="text"
+											containerClass="mb-3"
+											// register={register}
+											key="text"
+											// errors={errors}
+											// control={control}
+										/>
+									</Col>
 									<Col lg={6}>
-										<h5>Payment</h5>
+										<FormInput
+											label="QTY"
+											type="Number"
+											name="text"
+											containerClass="mb-3"
+											// register={register}
+											key="text"
+											// errors={errors}
+											// control={control}
+										/>
+									</Col>
+									<Col lg={6}>
+												<FormInput
+													label="Unit Price"
+													type="number"
+													name="text"
+													containerClass="mb-3"
+													// register={register}
+													key="text"
+													// errors={errors}
+													// control={control}
+												/>
+											</Col>
+											<Col lg={6}>
+										<FormInput
+											label="Manufacture Date"
+											type="date"
+											name="text"
+											containerClass="mb-3"
+											// register={register}
+											key="text"
+											// errors={errors}
+											// control={control}
+										/>
+									</Col>
+									<Col lg={6}>
+												<FormInput
+													label="Expire Date"
+													type="date"
+													name="text"
+													containerClass="mb-3"
+													// register={register}
+													key="text"
+													// errors={errors}
+													// control={control}
+												/>
+											</Col>
+									{/* <Col lg={6}>
+										<h5>Brand</h5>
 										<FloatingLabel
 											controlId="floatingSelect"
 											label="Payment Method"
@@ -268,24 +342,8 @@ const Inventory = () => {
 												
 											</Form.Select>
 										</FloatingLabel>
-									</Col>
-									<Col lg={12}>
-										<Row>
-											<Col lg={6}>
-												<FormInput
-													label="Pay Amount"
-													type="number"
-													name="text"
-													containerClass="mb-3"
-													// register={register}
-													key="text"
-													// errors={errors}
-													// control={control}
-												/>
-											</Col>
-										
-										</Row>
-									</Col>
+									</Col> */}
+									
 									<Col lg={12} className="">
 										<h5>
 											Description <span className="opacity-50">(optional)</span>
@@ -302,26 +360,13 @@ const Inventory = () => {
 													/>
 												</FloatingLabel>
 											</Col>
-											<Col lg={6}>
-												<FloatingLabel
-													controlId="floatingTextarea2"
-													label="Customer Description">
-													<Form.Control
-														as="textarea"
-														placeholder="Leave a comment here"
-														style={{ height: '100px' }}
-													/>
-												</FloatingLabel>
-											</Col>
+											
 										</Row>
 									</Col>
 								</Row>
 							</Col>
 
-							<Col lg={6}>
-
-								
-							</Col>
+							<Col lg={6}></Col>
 						</Row>
 					</div>
 				</Modal.Body>
@@ -329,9 +374,9 @@ const Inventory = () => {
 					<Button variant="light" onClick={toggleStandard}>
 						Close
 					</Button>
-					<Button variant="primary" onClick={toggleStandard}>
+					{/* <Button variant="primary" onClick={toggleStandard}>
 						Print
-					</Button>
+					</Button> */}
 					<Button variant="primary" onClick={toggleStandard}>
 						Save
 					</Button>

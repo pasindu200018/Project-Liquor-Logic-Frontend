@@ -19,8 +19,9 @@ import { useModal, useToggle } from '@/hooks'
 import { FormInput } from '@/components'
 import logoDark from '@/assets/images/logo-dark.png'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import { useGetAllUserQuery } from '@/api/UserSlice'
 
 export const options = [
 	{ value: '', label: 'Select' },
@@ -159,35 +160,40 @@ const expandablerecords: ExpandableRecord[] = [
 ]
 
 const Pos = () => {
+	// const { data: users, isLoading: usersLoading, error: usersError } =  useGetAllUserQuery()
+
 	const [isStandardOpen, toggleStandard] = useToggle()
+
 	const componentRef = useRef()
 
 	const handlePrint = useReactToPrint({
-		content: () => componentRef.current,
+		content: () => componentRef.current || null,
 	})
 
 	const {
-		isOpen,
+		// isOpen,
 		size,
-		className,
+		// className,
 		scroll,
 		toggleModal,
-		openModalWithSize,
+		// openModalWithSize,
 		openModalWithClass,
-		openModalWithScroll,
+		// openModalWithScroll,
 	} = useModal()
+
+	const [modelOpen, setModelOpen] = useState(false)
 
 	return (
 		<>
-			{/* model  */}
+			{/* model Start */}
 			<Modal
 				className="fade"
-				show={isOpen}
+				show={modelOpen}
 				onHide={toggleModal}
-				dialogClassName={className}
+				dialogClassName="modal-full-width"
 				size={size}
 				scrollable={scroll}>
-				<Modal.Header onHide={toggleStandard} closeButton>
+				<Modal.Header onHide={toggleStandard}>
 					<Modal.Title as="h4">Billing</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
@@ -230,8 +236,10 @@ const Pos = () => {
 										<Row>
 											<Col lg={6}>
 												<FloatingLabel
+												className='mb-3'
 													controlId="floatingTextarea2"
 													label="Order Description">
+													
 													<Form.Control
 														as="textarea"
 														placeholder="Leave a comment here"
@@ -256,7 +264,7 @@ const Pos = () => {
 							</Col>
 
 							<Col lg={6} id="printableDiv" ref={componentRef}>
-								<Row>
+								<Row className="m-3">
 									<Col lg={12}>
 										<div className="clearfix">
 											<div className="float-start mb-3">
@@ -280,71 +288,61 @@ const Pos = () => {
 										</div>
 									</Col>
 									<Col lg={12}>
-										<Card>
-											<Card.Header>
+										<div >
+											<div>
 												<h4 className="header-title">Small table</h4>
 												<p className="text-muted mb-0">
 													Add <code>.table-sm</code> to make tables more compact
 													by cutting cell padding in half.
 												</p>
-											</Card.Header>
-											<Card.Body>
-												<div className="table-responsive-sm">
-													<Table className="table-sm table-centered mb-0">
-														<thead>
-															<tr>
-																<th>Product</th>
-																<th>Price</th>
-																<th>Quantity</th>
-																<th>Amount</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td>Soyameet</td>
-																<td>2</td>
-																<td>
-																	<span className="badge bg-primary">
-																		4 Pcs
-																	</span>
-																</td>
-																<td>Rs 800.00</td>
-															</tr>
-															<tr>
-																<td>Soyameet</td>
-																<td>2</td>
-																<td>
-																	<span className="badge bg-primary">
-																		4 Pcs
-																	</span>
-																</td>
-																<td>Rs 800.00</td>
-															</tr>
-															<tr>
-																<td>Soyameet</td>
-																<td>2</td>
-																<td>
-																	<span className="badge bg-primary">
-																		4 Pcs
-																	</span>
-																</td>
-																<td>Rs 800.00</td>
-															</tr>
-															<tr>
-																<td>Soyameet</td>
-																<td>2</td>
-																<td>
-																	<span className="badge bg-primary">
-																		4 Pcs
-																	</span>
-																</td>
-																<td>Rs 800.00</td>
-															</tr>
-														</tbody>
-													</Table>
-												</div>
-											</Card.Body>
-										</Card>
+											</div>
+											<div>
+												<Table className="">
+													<thead>
+														<tr>
+															<th>Product</th>
+															<th>Price</th>
+															<th>Quantity</th>
+															<th>Amount</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>Soyameet</td>
+															<td>2</td>
+															<td>
+																<span className="badge bg-primary">4 Pcs</span>
+															</td>
+															<td>Rs 800.00</td>
+														</tr>
+														<tr>
+															<td>Soyameet</td>
+															<td>2</td>
+															<td>
+																<span className="badge bg-primary">4 Pcs</span>
+															</td>
+															<td>Rs 800.00</td>
+														</tr>
+														<tr>
+															<td>Soyameet</td>
+															<td>2</td>
+															<td>
+																<span className="badge bg-primary">4 Pcs</span>
+															</td>
+															<td>Rs 800.00</td>
+														</tr>
+														<tr>
+															<td>Soyameet</td>
+															<td>2</td>
+															<td>
+																<span className="badge bg-primary">4 Pcs</span>
+															</td>
+															<td>Rs 800.00</td>
+														</tr>
+													</tbody>
+												</Table>
+											</div>
+										</div>
 									</Col>
 									<Col
 										lg={12}
@@ -375,7 +373,7 @@ const Pos = () => {
 					</div>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant="light" onClick={toggleStandard}>
+					<Button variant="light" onClick={() => setModelOpen(!modelOpen)}>
 						Close
 					</Button>
 					{/* <ReactToPrint/> */}
@@ -387,8 +385,8 @@ const Pos = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
+			{/* model End */}
 
-			{/* model  */}
 			<div className="d-flex justify-content-between align-items-center mt-3 mb-3 ">
 				<h4>Cashier : Imalka Thathmi</h4>
 				<Link to="/order">
@@ -397,6 +395,8 @@ const Pos = () => {
 					</Button>
 				</Link>
 			</div>
+
+			{/* table Start */}
 			<div className="grid-structure">
 				<Row>
 					<Col lg={7}>
@@ -505,13 +505,14 @@ const Pos = () => {
 							<Button
 								variant="secondary"
 								className="btn-sm mt-2 w-100 p-2  fs-4"
-								onClick={() => openModalWithClass('modal-full-width')}>
+								onClick={() => setModelOpen(true)}>
 								Grand Total Rs 800.00
 							</Button>
 						</div>
 					</Col>
 				</Row>
 			</div>
+			{/* table Start */}
 		</>
 	)
 }

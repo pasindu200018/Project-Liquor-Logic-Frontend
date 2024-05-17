@@ -242,19 +242,91 @@ const Supplier = () => {
 				className="fade"
 				show={isOpen}
 				onHide={toggleModal}
-				dialogClassName={className}
+				dialogClassName="lg"
 				size={size}
 				scrollable={scroll}>
 				<Modal.Header onHide={toggleStandard} closeButton>
-					<Modal.Title as="h4">Billing</Modal.Title>
+					<Modal.Title as="h4">Add Inventory</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<div className="grid-structure">
 						<Row className="mt-2">
-							<Col lg={6}>
+							<Col lg={12}>
 								<Row>
+									<Col lg={12}>
+										<FormInput
+											label="Name"
+											type="text"
+											name="text"
+											containerClass="mb-3"
+											// register={register}
+											key="text"
+											// errors={errors}
+											// control={control}
+										/>
+									</Col>
+									<Col lg={12}>
+										<FormInput
+											label="Brand"
+											type="text"
+											name="text"
+											containerClass="mb-3"
+											// register={register}
+											key="text"
+											// errors={errors}
+											// control={control}
+										/>
+									</Col>
 									<Col lg={6}>
-										<h5>Payment</h5>
+										<FormInput
+											label="QTY"
+											type="Number"
+											name="text"
+											containerClass="mb-3"
+											// register={register}
+											key="text"
+											// errors={errors}
+											// control={control}
+										/>
+									</Col>
+									<Col lg={6}>
+												<FormInput
+													label="Unit Price"
+													type="number"
+													name="text"
+													containerClass="mb-3"
+													// register={register}
+													key="text"
+													// errors={errors}
+													// control={control}
+												/>
+											</Col>
+											<Col lg={6}>
+										<FormInput
+											label="Manufacture Date"
+											type="date"
+											name="text"
+											containerClass="mb-3"
+											// register={register}
+											key="text"
+											// errors={errors}
+											// control={control}
+										/>
+									</Col>
+									<Col lg={6}>
+												<FormInput
+													label="Expire Date"
+													type="date"
+													name="text"
+													containerClass="mb-3"
+													// register={register}
+													key="text"
+													// errors={errors}
+													// control={control}
+												/>
+											</Col>
+									{/* <Col lg={6}>
+										<h5>Brand</h5>
 										<FloatingLabel
 											controlId="floatingSelect"
 											label="Payment Method"
@@ -265,24 +337,8 @@ const Supplier = () => {
 												
 											</Form.Select>
 										</FloatingLabel>
-									</Col>
-									<Col lg={12}>
-										<Row>
-											<Col lg={6}>
-												<FormInput
-													label="Pay Amount"
-													type="number"
-													name="text"
-													containerClass="mb-3"
-													// register={register}
-													key="text"
-													// errors={errors}
-													// control={control}
-												/>
-											</Col>
-										
-										</Row>
-									</Col>
+									</Col> */}
+									
 									<Col lg={12} className="">
 										<h5>
 											Description <span className="opacity-50">(optional)</span>
@@ -299,26 +355,13 @@ const Supplier = () => {
 													/>
 												</FloatingLabel>
 											</Col>
-											<Col lg={6}>
-												<FloatingLabel
-													controlId="floatingTextarea2"
-													label="Customer Description">
-													<Form.Control
-														as="textarea"
-														placeholder="Leave a comment here"
-														style={{ height: '100px' }}
-													/>
-												</FloatingLabel>
-											</Col>
+											
 										</Row>
 									</Col>
 								</Row>
 							</Col>
 
-							<Col lg={6}>
-
-								
-							</Col>
+							<Col lg={6}></Col>
 						</Row>
 					</div>
 				</Modal.Body>
@@ -326,9 +369,9 @@ const Supplier = () => {
 					<Button variant="light" onClick={toggleStandard}>
 						Close
 					</Button>
-					<Button variant="primary" onClick={toggleStandard}>
+					{/* <Button variant="primary" onClick={toggleStandard}>
 						Print
-					</Button>
+					</Button> */}
 					<Button variant="primary" onClick={toggleStandard}>
 						Save
 					</Button>
